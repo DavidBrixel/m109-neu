@@ -1,23 +1,24 @@
-# Apache HTTP Server (httpd) S2I Sample Application
+# OpenShift Clients
 
-This is a very basic sample application repository that can be built and deployed
-on [OpenShift](https://www.openshift.com) using the [Apache HTTP Server builder image](https://github.com/sclorg/httpd-container).
+The OpenShift client `oc` simplifies working with Kubernetes and OpenShift
+clusters, offering a number of advantages over `kubectl` such as easy login,
+kube config file management, and access to developer tools. The `kubectl`
+binary is included alongside for when strict Kubernetes compliance is necessary.
 
-The application serves a single static html page via httpd.
+To learn more about OpenShift, visit [docs.openshift.com](https://docs.openshift.com)
+and select the version of OpenShift you are using.
 
-To build and run the application:
+## Installing the tools
 
-```
-$ s2i build https://github.com/sclorg/httpd-ex centos/httpd-24-centos7 myhttpdimage
-$ docker run -p 8080:8080 myhttpdimage
-$ # browse to http://localhost:8080
-```
+After extracting this archive, move the `oc` and `kubectl` binaries
+to a location on your PATH such as `/usr/local/bin`. Then run:
 
-You can also build and deploy the application on OpenShift, assuming you have a
-working `oc` command line environment connected to your cluster already:
+    oc login [API_URL]
 
-`$ oc new-app centos/httpd-24-centos7~https://github.com/sclorg/httpd-ex`
+to start a session against an OpenShift cluster. After login, run `oc` and
+`oc help` to learn more about how to get started with OpenShift.
 
-You can also deploy the sample template for the application:
+## License
 
-`$ oc new-app -f https://raw.githubusercontent.com/sclorg/httpd-ex/master/openshift/templates/httpd.json`
+OpenShift is licensed under the Apache Public License 2.0. The source code for this
+program is [located on github](https://github.com/openshift/origin).
